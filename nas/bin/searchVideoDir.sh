@@ -58,9 +58,9 @@ search_videos() {
         done
         if $all_files_meet_criteria ; then
             echo -n "\"${directory}$(basename "$dir")\"";print_total_size $dir;echo ''
-            if ! -z $dest; then
+            if [ -n "$dest" ]; then
               echo " move $(basename "$dir") to $dest "
-              mv $(basename "$dir") $dest;
+              mv "${directory}$(basename "$dir")" "$dest";
             fi
         fi
     done
