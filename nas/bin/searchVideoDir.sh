@@ -61,6 +61,7 @@ search_videos() {
             if ! -z $dest; then
               echo " move $(basename "$dir") to $dest "
               mv $(basename "$dir") $dest;
+            fi
         fi
     done
 }
