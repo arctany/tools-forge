@@ -58,6 +58,9 @@ search_videos() {
         done
         if $all_files_meet_criteria ; then
             echo -n "\"${directory}$(basename "$dir")\"";print_total_size $dir;echo ''
+            if ! -z $dest; then
+              echo " move $(basename "$dir") to $dest "
+              mv $(basename "$dir") $dest;
         fi
     done
 }
@@ -77,6 +80,9 @@ while getopts ":d:m:M:Dh" opt; do
     D)
       debug=true
       ;;
+    r)
+      dest=$OPTARG
+      ;;
     h)
       echo "Usage: $0 -d directory -m min_size -M max_size [-D] [-h]"
       echo "Search video files in the given directory and its subdirectories."
@@ -85,6 +91,7 @@ while getopts ":d:m:M:Dh" opt; do
       echo "  -M   maximum file size in MB"
       echo "  -D   debug mode"
       echo "  -h   display this help message"
+      echo "  -r   dest dir to move "
       exit 0
       ;;
     \?)
