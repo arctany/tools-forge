@@ -57,17 +57,13 @@ search_videos() {
             fi
         done
         if $all_files_meet_criteria ; then
-            echo -n $dir;print_total_size $dir;echo ''
-            if [ -n "$dest" ]; then
-              echo " move $(basename "$dir") to $dest "
-              mv $dir $dest;
-            fi
+            echo -n "\"${directory}$(basename "$dir")\"";print_total_size $dir;echo ''
         fi
     done
 }
 
 # Parse command line arguments
-while getopts ":d:m:M:D:rh" opt; do
+while getopts ":d:m:M:Dh" opt; do
   case ${opt} in
     d)
       directory=$OPTARG
