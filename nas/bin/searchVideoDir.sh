@@ -57,10 +57,10 @@ search_videos() {
             fi
         done
         if $all_files_meet_criteria ; then
-            echo -n "\"${directory}$(basename "$dir")\"";print_total_size $dir;echo ''
+            echo -n $dir;print_total_size $dir;echo ''
             if [ -n "$dest" ]; then
               echo " move $(basename "$dir") to $dest "
-              mv "${directory}$(basename "$dir")" "$dest";
+              mv $dir $dest;
             fi
         fi
     done
