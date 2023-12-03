@@ -67,7 +67,7 @@ search_videos() {
 }
 
 # Parse command line arguments
-while getopts ":d:m:M:Dh" opt; do
+while getopts ":d:m:M:D:rh" opt; do
   case ${opt} in
     d)
       directory=$OPTARG
